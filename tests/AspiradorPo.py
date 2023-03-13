@@ -1,25 +1,22 @@
 from aigyminsper.search.SearchAlgorithms import BuscaProfundidadeIterativa
 from aigyminsper.search.Graph import State
-
 class ProblemSpecification(State):
 
-    def __init__(self, op, posRobo, s_esq, s_dir):
+    def __init__(self, op):
         # You must use this name for the operator!
         self.operator = op
-        self.pos = posRobo
-        self.situacaoEsq = s_esq
-        self.situacaoDir = s_dir
+        self.pos = 'left'
     
     def sucessors(self):
         sucessors = []
-        sucessors.append()
+        #TODO
         return sucessors
     
     def is_goal(self):
-        return True if self.situacaoEsq == "Limpo" and self.situacaoDir == "Limpo" and self.pos == "ESQ" else False
+        pass
     
     def description(self):
-        return "Implementa robo aspirador para dois quartos."
+        return "Descrição do problema"
     
     def cost(self):
         return 1
@@ -44,12 +41,13 @@ class ProblemSpecification(State):
 
 def main():
     print('Busca em profundidade iterativa')
-    state = ProblemSpecification('')
+    state = U2(False,False,False,False,False)
     algorithm = BuscaProfundidadeIterativa()
     result = algorithm.search(state)
     if result != None:
         print('Achou!')
         print(result.show_path())
+        print(f'Custo: {result.g}')
     else:
         print('Nao achou solucao')
 
